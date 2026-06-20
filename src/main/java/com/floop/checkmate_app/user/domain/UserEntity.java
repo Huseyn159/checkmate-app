@@ -1,0 +1,49 @@
+package com.floop.checkmate_app.user.domain;
+
+
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import java.time.Instant;
+import java.util.UUID;
+
+@Entity
+@Table(name = "users")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor @Builder
+public class UserEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Column(name = "password_hash")
+    private String passwordHash;
+
+    @Column(name = "full_name")
+    private String fullName;
+
+    private String phone;
+
+    @Column(name = "avatar_url")
+    private String avatarUrl;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
+
+    @Column(name = "trust_score", nullable = false)
+    private Integer trustScore;
+
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false)
+    private Instant createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private Instant updatedAt;
+}
