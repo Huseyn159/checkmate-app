@@ -176,8 +176,11 @@ export default function PaymentsPage() {
                             <CartesianGrid strokeDasharray="3 3" stroke="#EFE3D6" vertical={false} />
                             <XAxis dataKey="date" tickFormatter={fmtDay} tick={{ fontSize: 12, fill: "#7C6F63" }} tickLine={false} axisLine={false} />
                             <YAxis tick={{ fontSize: 12, fill: "#7C6F63" }} tickLine={false} axisLine={false} width={40} />
-                            <Tooltip formatter={(v: number) => [`${az(v)} ₼`, "Alınan"]} labelFormatter={(l: string) => fmtDay(l)} contentStyle={{ borderRadius: 12, border: "1px solid #EFE3D6", fontSize: 13 }} />
-                            <Area type="monotone" dataKey="received" stroke="#E85D2C" strokeWidth={2.5} fill="url(#rev)" />
+                            <Tooltip
+                                formatter={(v: any) => [`${az(Number(v) || 0)} ₼`, "Alınan"]}
+                                labelFormatter={(l: string) => fmtDay(l)}
+                                contentStyle={{ borderRadius: 12, border: "1px solid #EFE3D6", fontSize: 13 }}
+                            />                            <Area type="monotone" dataKey="received" stroke="#E85D2C" strokeWidth={2.5} fill="url(#rev)" />
                         </AreaChart>
                     </ResponsiveContainer>
                 )}
