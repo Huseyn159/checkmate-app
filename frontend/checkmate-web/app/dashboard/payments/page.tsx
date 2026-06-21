@@ -178,7 +178,7 @@ export default function PaymentsPage() {
                             <YAxis tick={{ fontSize: 12, fill: "#7C6F63" }} tickLine={false} axisLine={false} width={40} />
                             <Tooltip
                                 formatter={(v: any) => [`${az(Number(v) || 0)} ₼`, "Alınan"]}
-                                labelFormatter={(l: string) => fmtDay(l)}
+                                labelFormatter={(l: any) => l ? fmtDay(String(l)) : ""}
                                 contentStyle={{ borderRadius: 12, border: "1px solid #EFE3D6", fontSize: 13 }}
                             />                            <Area type="monotone" dataKey="received" stroke="#E85D2C" strokeWidth={2.5} fill="url(#rev)" />
                         </AreaChart>
